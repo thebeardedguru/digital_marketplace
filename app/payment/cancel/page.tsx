@@ -14,8 +14,8 @@ export default function CancelRoute() {
           <div className='mt-3 text-center sm:mt-4 w-full'>
             <h3 className='text-lg leading-6 font-medium'>Payment Cancelled</h3>
             <p className='mt-2 text-sm text-muted-foreground'>
-              Something went wrong with your payment. You haven't been charged.
-              Please try again.
+              Something went wrong with your payment. You haven&apos;t been
+              charged. Please try again.
             </p>
 
             <Button className='mt-5 sm:mt-6 w-full' asChild>
