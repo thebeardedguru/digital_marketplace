@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id                    String  @id @unique
+  email                 String
+  firstName             String
+  lastName              String
+  profileImage          String
+  role                  String
+  connectedAccountId    String  @unique
+  stripeConnectedLinked Boolean @default(false)
+
+  Product Product[]
+}
+
+model Product {
+  id               String        @id @default(uuid())
+  name             String
+  price            Int
+  smallDescription String
+  description      Json
+  images           String[]
+  productFile      String
+  condition        Condition
+  category         CategoryTypes
+
+  createdAt DateTime @default(now())
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+}
+
+enum CategoryTypes {
+  purses
+  clothing
+  accessories
+}
+
+enum Condition {
+  NEW_WITH_TAGS
+  NEW_WITHOUT_TAGS
+  LIKE_NEW
+  GENTLY_USED
+  GOOD
+  FAIR
+  FOR_PARTS_OR_REPAIR
+}
