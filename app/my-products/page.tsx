@@ -5,7 +5,6 @@ import { getConditionType } from '@/lib/utils';
 import { unstable_noStore as noStore } from 'next/cache';
 
 async function getData(userId: string) {
-  noStore();
   const data = await prisma.product.findMany({
     where: {
       userId: userId,
@@ -24,6 +23,7 @@ async function getData(userId: string) {
 }
 
 export default async function MyProducts() {
+  noStore();
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   if (!user) throw new Error('Unauthorized');
