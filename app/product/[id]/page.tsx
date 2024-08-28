@@ -13,8 +13,10 @@ import Image from 'next/image';
 import { getConditionType } from '@/lib/utils';
 import { BuyProduct } from '@/app/actions';
 import { BuyButton } from '@/app/components/SubmitButtons';
+import { unstable_noStore as noStore } from 'next/cache';
 
 async function getData(id: string) {
+  noStore();
   const data = await prisma.product.findUnique({
     where: {
       id: id,

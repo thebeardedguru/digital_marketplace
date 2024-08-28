@@ -4,8 +4,10 @@ import prisma from '@/app/lib/db';
 import { getConditionType } from '@/lib/utils';
 import { CategoryTypes } from '@prisma/client';
 import { notFound } from 'next/navigation';
+import { unstable_noStore as noStore } from 'next/cache';
 
 async function getData(category: string) {
+  noStore();
   let input;
 
   switch (category) {

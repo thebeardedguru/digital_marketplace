@@ -10,8 +10,10 @@ import prisma from '../lib/db';
 import { Button } from '@/components/ui/button';
 import { CreateStripeAccountLink, GetStripeDashboardLink } from '../actions';
 import { Submitbutton } from '../components/SubmitButtons';
+import { unstable_noStore as noStore } from 'next/cache';
 
 async function getData(userId: string) {
+  noStore();
   const data = await prisma.user.findUnique({
     where: {
       id: userId,
