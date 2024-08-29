@@ -176,8 +176,14 @@ export async function BuyProduct(formData: FormData) {
         destination: data?.User?.connectedAccountId as string,
       },
     },
-    success_url: 'http://localhost:3000/payment/success',
-    cancel_url: 'http://localhost:3000/payment/cancel',
+    success_url:
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3000/payment/success'
+        : 'https://digital-marketplace-blond-iota.vercel.app/payment/success',
+    cancel_url:
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3000/payment/cancel'
+        : 'https://digital-marketplace-blond-iota.vercel.app/payment/cancel',
   });
 
   return redirect(session.url as string);
@@ -202,10 +208,16 @@ export async function CreateStripeAccountLink() {
 
   const accountLink = await stripe.accountLinks.create({
     account: data?.connectedAccountId as string,
-    refresh_url: 'http://localhost:3000/billing',
-    return_url: `http://localhost:3000/return/${
-      data?.connectedAccountId as string
-    }`,
+    refresh_url:
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3000/billing'
+        : 'https://digital-marketplace-blond-iota.vercel.app/billing',
+    return_url:
+      process.env.NODE_ENV === 'development'
+        ? `http://localhost:3000/return/${data?.connectedAccountId as string}`
+        : `https://digital-marketplace-blond-iota.vercel.app/return/${
+            data?.connectedAccountId as string
+          }`,
     type: 'account_onboarding',
   });
 
