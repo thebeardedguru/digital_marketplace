@@ -5,7 +5,7 @@ export default function Home() {
     <section className='bg-gradient-to-br from-white to-gray-50 py-24 px-8'>
       <div className='max-w-6xl mx-auto text-center px-6'>
         <h1 className='text-5xl font-extrabold text-gray-900 tracking-tight'>
-          Chatty<span className='text-primary'>&apos;</span>s Luxury Handbags
+          Chattys Closet
         </h1>
         <h2 className='text-2xl font-medium text-gray-700 mt-4'>
           Your Destination for New & Pre-Loved Designer Purses
