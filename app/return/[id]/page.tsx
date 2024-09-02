@@ -16,7 +16,7 @@ export default function ReturnUrlStripe() {
               Account Linked Successfully
             </h3>
             <p className='mt-2 text-sm text-muted-foreground'>
-              Congrats on linking your account to Chatty&apos;s. You can now
+              Congrats on linking your account to Chattys Closet. You can now
               start selling your products!
             </p>
 

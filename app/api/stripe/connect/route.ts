@@ -35,6 +35,8 @@ export async function POST(req: Request) {
               : true,
         },
       });
+
+      console.log('stripe account.updated data is: ', data);
       break;
     }
     default: {
