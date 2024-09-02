@@ -35,6 +35,8 @@ export async function GET() {
       },
     });
 
+    const userImage = user.picture;
+
     const userInitials =
       (user?.given_name?.[0] || '') + (user?.family_name?.[0] || '');
     dbUser = await prisma.user.create({
@@ -45,7 +47,8 @@ export async function GET() {
         email: user.email ?? '',
         role: 'customer',
         profileImage:
-          user.picture ?? `https://avatar.vercel.sh/${userInitials}`,
+          user.picture ??
+          `https://avatar.vercel.sh/vercel.svg?text=${userInitials}`,
         connectedAccountId: account.id,
       },
     });
