@@ -33,6 +33,8 @@ export default async function BillingRoute() {
 
   const data = await getData(user.id);
 
+  console.log('billing route data is: ', data);
+
   return (
     <section className='max-w-7xl mx-auto px-4 md:px-8'>
       <Card>

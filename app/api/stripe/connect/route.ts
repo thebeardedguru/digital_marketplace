@@ -22,7 +22,7 @@ export async function POST(req: Request) {
   switch (event.type) {
     case 'account.updated': {
       const account = event.data.object;
-
+      console.log('account is: ', account);
       const data = await prisma.user.update({
         where: {
           connectedAccountId: account.id,

@@ -206,6 +206,10 @@ export async function CreateStripeAccountLink() {
     },
   });
 
+  console.log('');
+  console.log('Environment is: ', process.env.NODE_ENV);
+  console.log('CreateStripeAccountLink data is: ', data);
+
   const accountLink = await stripe.accountLinks.create({
     account: data?.connectedAccountId as string,
     refresh_url:
@@ -220,6 +224,9 @@ export async function CreateStripeAccountLink() {
           }`,
     type: 'account_onboarding',
   });
+
+  console.log('');
+  console.log('account link URL is: ', accountLink.url);
 
   return redirect(accountLink.url);
 }
